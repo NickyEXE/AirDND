@@ -18,6 +18,8 @@
   <%= f.text_field :image_url %>
   <br><%= f.label :party_id%>
   <%= f.collection_select(:party_id, Party.all, :id, :mission)%>
+  <br><%= f.label :bio%>
+  <%= f.text_area :bio %><br>
   <br><%= f.submit %>
 <% end %>
 

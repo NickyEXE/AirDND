@@ -5,6 +5,7 @@ Tim the Pyromancer says: It's time to spark a flame in your party's heart.<br>
 Class: <%= @character.char_class %><br>
 Race: <%= @character.race %><br>
 Level: <%= @character.level %><br>
+Bio: <%= @character.bio %><br>
 
 <%= button_to "Yes daddy. Add #{@character.name} to my party.", "/parties/#{@party.id}/#{@character.id}", { method: :patch } %>
 <%= button_to "No. Show me someone else.", "/parties/#{@party.id}/tinder", { method: :get} %>
