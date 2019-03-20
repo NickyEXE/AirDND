@@ -1,0 +1,7 @@
+<center>
+<% @characters.each do |character| %>
+<strong><%= link_to character.name, character_path(character) %></strong><br>
+  <%= image_tag character.image_url, style: 'max-height:400px'%><br>
+  <%= character.race %> - <%= character.level %><br><br>
+<% end %>
+</center>

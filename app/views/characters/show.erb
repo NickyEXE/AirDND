@@ -1,0 +1,17 @@
+<%if @character.alive_reader%>
+<h2><font color="yellow"><%=@character.alive_reader%></font></h2>
+<% end %>
+<%= image_tag @character.image_url %><br>
+<h1><%= @character.name %><br></h1>
+Class: <%= @character.char_class %><br>
+Race: <%= @character.race %><br>
+Level: <%= @character.level %><br>
+Mission: <%= @character.mission %><br>
+Liveliness Attribute: <%if @character.alive%>
+<%=@character.name%> still stands.<br>
+<% else %>
+<%= @character.name%> has fallen.<br>
+<% end %>
+<%= link_to "Edit #{@character.name}", edit_character_path%>
+<%= button_to "#{@character.kill_button_prompt}" , "/characters/#{@character.id}/kill_unkill", {method: :get}%>
+<%= button_to "Erase #{@character.name} from existence. (This does not simply kill them. It eradicates all memory of them.)", character_path(@character), {method: :delete}%>

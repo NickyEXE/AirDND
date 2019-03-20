@@ -1,0 +1,14 @@
+<h1>Here are the current outstanding adventures:</h1>
+
+<% i=0 %>
+<% @parties.each do |party| %>
+  <% i+=1 %>
+  <h2><font color = "white"><%= i %>. <%= link_to party.mission, party_path(party) %></font></h2>
+  <font color = "yellow">Alignment: <%=party.alignment%><br>
+  Current number of party members: <%= party.characters.length %></font>
+
+  <br>
+<% end %>
+<br>
+<%= button_to "Create a new mission.", new_party_path, {method: :get} %>
+<%= button_to "Add a new character.", new_character_path, {method: :get} %>

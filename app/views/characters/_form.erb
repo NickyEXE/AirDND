@@ -1,0 +1,28 @@
+<% if flash[:errors]%>
+  <% flash[:errors].each do |error_message| %>
+  <%= error_message%>
+  <br>
+  <% end %>
+<% end %>
+
+<%= form_for @character do |f| %>
+  <%= f.label :name%>
+  <%= f.text_field :name %>
+  <br><%= f.label :char_class%>
+  <%= f.collection_select(:char_class, @character.class.races, :to_s, :to_s)%>
+  <br><%= f.label :race%>
+  <%= f.text_field :race %>
+  <br><%= f.label :level%>
+  <%= f.text_field :level %>
+  <br><%= f.label :image_url%>
+  <%= f.text_field :image_url %>
+  <br><%= f.label :party_id%>
+  <%= f.collection_select(:party_id, Party.all, :id, :mission)%>
+  <br><%= f.submit %>
+<% end %>
+
+<%if @character.image_url%>
+<%= image_tag @character.image_url %><br>
+<%end%>
+
+<%= button_to "I changed my mind. Send me back to the list of missions.", parties_path, { method: :get} %>

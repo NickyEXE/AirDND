@@ -1,0 +1,26 @@
+<h1> <font color="red">Meet the party currently looking to:</font></h1>
+<h2><font color="yellow"><%= @party.mission %></font></h2>
+<font color="white">
+<% if @party.characters.length > 0 %>
+  <% @party.characters.each do |character| %>
+  <%= image_tag character.image_url, style: 'max-height:100px' %><br>
+    <%= link_to character.name, character_path(character) %><br>
+    Class: <%= character.char_class %><br>
+    Race: <%= character.race %><br>
+    Level: <%= character.level %><br>
+    Liveliness Attribute: <%if character.alive%>
+    <%=character.name%> still stands.<br>
+    <% else %>
+    <%= character.name%> has fallen.<br>
+    <% end %>
+    <br>
+    <%= button_to "Fire #{character.name}.", "/parties/#{@party.id}/#{character.id}", { method: :patch} %>
+  <% end %>
+  </font>
+  <% else %>
+  <h2>You do not have any party members. Use AirDND below to get one!</h2>
+<% end %>
+<br><br>
+<%= button_to "Use AirDND to find a new party member.", "/parties/#{@party.id}/tinder", { method: :get} %><br>
+<%= button_to "Mark this mission as complete. (This deletes the mission and makes all of its characters unemployed.)", party_path(@party), {method: :delete}%><br>
+<%= button_to "Go back to the list of outstanding missions.", parties_path, {method: :get} %>

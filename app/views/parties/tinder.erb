@@ -1,0 +1,11 @@
+Tim the Pyromancer says: It's time to spark a flame in your party's heart.<br>
+<h1>Is <font color=yellow><%= @character.name %></font> the perfect fit for your mission to<br></h1>
+<h2><%= @party.mission %></h2>
+<%= image_tag @character.image_url, style: 'max-width:60%' %><br>
+Class: <%= @character.char_class %><br>
+Race: <%= @character.race %><br>
+Level: <%= @character.level %><br>
+
+<%= button_to "Yes daddy. Add #{@character.name} to my party.", "/parties/#{@party.id}/#{@character.id}", { method: :patch } %>
+<%= button_to "No. Show me someone else.", "/parties/#{@party.id}/tinder", { method: :get} %>
+<%= button_to "I no longer need murderers. Send me back to my party.", "/parties/#{@party.id}", { method: :get} %>
